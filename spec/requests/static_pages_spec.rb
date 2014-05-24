@@ -1,34 +1,31 @@
 require 'spec_helper'
 
 describe "StaticPages" do
-  describe "GET /static_pages/home" do
-    it "should have a home page" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      visit 'static_pages/home'
-      expect(page).to have_title('Tutorial Sample App')
-    end
 
-    it "should not have a custom title" do
-    visit 'static_pages/home'
-    expect(page).not_to have_title('| Home')
-    end
-
+  subject { page }
+  describe "Home Page" do
+    before { visit root_path }
+    it { should have_content('Welcome') }
+    it { should have_title('Tutorial Sample App') }
+    it { should_not have_title('| Home') }
   end
 
-  describe "GET /static_pages/help" do
-    it "should have a help page" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      visit 'static_pages/help'
-      expect(page).to have_title('Tutorial Sample App | Help')
-    end
+  describe "Help Page" do
+    before { visit help_path }
+    it { should have_content('Help') }
+    it { should have_title('Tutorial Sample App | Help') }
   end
 
-  describe "GET /static_pages/about" do
-    it "should have an about page" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      visit 'static_pages/about'
-      expect(page).to have_title('Tutorial Sample App | About')
-    end
+  describe "About Page" do
+    before { visit about_path }
+    it { should have_content('About') }
+    it { should have_title('Tutorial Sample App | About') }
+  end
+
+  describe "Contact Page" do
+    before { visit contact_path }
+    it { should have_content('Contact') }
+    it { should have_title('Tutorial Sample App | Contact') }
   end
 
 end
