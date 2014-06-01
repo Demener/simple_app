@@ -15,6 +15,9 @@ describe User do
 	it { should be_valid }
 	it { should respond_to(:authenticate) }
 
+	#Added for sessions
+	it { should respond_to(:remember_token)}
+
 	describe "no name" do
 		before { @user.name = "" }
 		it { should_not be_valid }
@@ -91,5 +94,10 @@ describe User do
 	describe "password too short" do
 		before { @user.password = @user.password_confirmation = "a" * 5 }
 		it { should be_invalid}
+	end
+
+	describe "remember toekn" do
+		before { @user.save }
+		its(:remember_token) { should_not be_blank }
 	end
 end
