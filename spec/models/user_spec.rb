@@ -14,9 +14,18 @@ describe User do
 	it { should respond_to(:password_confirmation) }
 	it { should be_valid }
 	it { should respond_to(:authenticate) }
+	it { should_not be_admin}
 
 	#Added for sessions
 	it { should respond_to(:remember_token)}
+
+	describe "with admin set true" do
+		before do
+			@user.save!
+			@user.toggle!(:admin)
+		end
+		it { should be_admin }
+	end
 
 	describe "no name" do
 		before { @user.name = "" }

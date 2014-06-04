@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Speed up tests by lower bcrypt cost
   ActiveModel::SecurePassword.min_cost = true;
+
+  # Set enviroment
+  Rails.application.routes.default_url_options = {:host => "localhost:3000"}
 end
