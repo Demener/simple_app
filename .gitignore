@@ -16,4 +16,4 @@
 /tmp
 
 # Ignore setup mail
-/config/initializers/setup_mail.rb
+# /config/initializers/setup_mail.rb
